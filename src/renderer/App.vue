@@ -10,4 +10,5 @@ export default {
 }
 </script>
 
+<style src="spectre.css/dist/spectre.css" lang="css"></style>
 <style src="./assets/styles/style.css" lang="css"></style>
