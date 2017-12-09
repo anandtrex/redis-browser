@@ -30,7 +30,7 @@ export default {
     }
   },
 
-  props: ['currentKey'],
+  props: ['currentKey', 'redisServerUrl'],
 
   mounted: function () {
     console.log('Loading Key Contents!')
@@ -66,6 +66,10 @@ export default {
           })
         }
       })
+    },
+    redisServerUrl: function() {
+      console.log(`Redis server url is ${this.redisServerUrl}`)
+      this.client = redis.createClient(this.redisServerUrl)
     }
   }
 }

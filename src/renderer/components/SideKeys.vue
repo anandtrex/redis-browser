@@ -1,15 +1,16 @@
 <template>
-<ul class="menu menu-list">
-  <li class="divider" data-content="KEYS">
-    <li v-for="key in keys" class="menu-item">
-      <a v-on:click='setCurrentKey(key)'>{{ key }}</a>
-    </li>
-</ul>
+  <ul class="menu menu-list">
+    <li class="divider" data-content="KEYS">
+      <li v-for="key in keys" class="menu-item">
+        <a v-on:click='setCurrentKey(key)'>{{ key }}</a>
+      </li>
+  </ul>
 </template>
 
 <script>
 import redis from 'redis';
 import rejson from 'redis-rejson';
+import redisRetryStrategy from '../utils.js'
 
 export default {
   name: 'SideKeys',
@@ -18,19 +19,35 @@ export default {
       keys: []
     }
   },
+
+  props: ['redisServerUrl'],
+
   mounted: function() {
     console.log('Loading Side Keys!')
-    this.client = redis.createClient()
+    this.initClientAndUpdateKeys()
+  },
 
-    this.client.keys('*', (err, replies) => {
-      this.keys = replies;
-    });
+  watch: {
+    redisServerUrl: function() {
+      console.log(`Redis server url in SideKeys is ${this.redisServerUrl}`)
+      this.initClientAndUpdateKeys()
+    }
   },
 
   methods: {
     setCurrentKey: function(currentKey) {
       console.log(`Sending event to set current key as ${currentKey}`)
       this.$emit('setCurrentKeyEvent', currentKey)
+    },
+
+    initClientAndUpdateKeys: function(){
+      this.keys = []
+      this.client = redis.createClient(this.redisServerUrl, {
+        retry_strategy: redisRetryStrategy
+      })
+      this.client.keys('*', (err, replies) => {
+        this.keys = replies;
+      });
     }
   }
 }
