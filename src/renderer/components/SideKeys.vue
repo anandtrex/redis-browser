@@ -8,13 +8,12 @@
 </template>
 
 <script>
-import redis from 'redis';
-import rejson from 'redis-rejson';
-import redisRetryStrategy from '../utils.js'
+import redis from 'redis'
+import rejson from 'redis-rejson'
 
 export default {
   name: 'SideKeys',
-  data: function() {
+  data: function () {
     return {
       keys: []
     }
@@ -22,32 +21,30 @@ export default {
 
   props: ['redisServerUrl'],
 
-  mounted: function() {
+  mounted: function () {
     console.log('Loading Side Keys!')
     this.initClientAndUpdateKeys()
   },
 
   watch: {
-    redisServerUrl: function() {
+    redisServerUrl: function () {
       console.log(`Redis server url in SideKeys is ${this.redisServerUrl}`)
       this.initClientAndUpdateKeys()
     }
   },
 
   methods: {
-    setCurrentKey: function(currentKey) {
+    setCurrentKey: function (currentKey) {
       console.log(`Sending event to set current key as ${currentKey}`)
       this.$emit('setCurrentKeyEvent', currentKey)
     },
 
-    initClientAndUpdateKeys: function(){
+    initClientAndUpdateKeys: function () {
       this.keys = []
-      this.client = redis.createClient(this.redisServerUrl, {
-        retry_strategy: redisRetryStrategy
-      })
+      this.client = redis.createClient(this.redisServerUrl)
       this.client.keys('*', (err, replies) => {
-        this.keys = replies;
-      });
+        this.keys = replies
+      })
     }
   }
 }

@@ -49,8 +49,8 @@ export default {
 
       const key = this.currentKey
       this.client.type(key, (err, keyType) => {
-        if(err){
-          console.log(err);
+        if (err) {
+          console.log(err)
         }
         if (keyType === 'ReJSON-RL') {
           this.client.json_get(key, (err1, replies) => {
@@ -67,7 +67,7 @@ export default {
         }
       })
     },
-    redisServerUrl: function() {
+    redisServerUrl: function () {
       console.log(`Redis server url is ${this.redisServerUrl}`)
       this.client = redis.createClient(this.redisServerUrl)
     }

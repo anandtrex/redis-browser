@@ -13,7 +13,7 @@ const template = [
     submenu: [
       {
         label: 'About',
-        click () { require('electron').shell.openExternal('https://github.com/anandtrex/redis-browser')}
+        click () { require('electron').shell.openExternal('https://github.com/anandtrex/redis-browser') }
       }
     ]
   }

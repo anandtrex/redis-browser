@@ -25,13 +25,13 @@ import ServerUrl from './ServerUrl'
 
 export default {
   name: 'RedisView',
-  data: function() {
+  data: function () {
     return {
       currentKey: null,
-      redisServerUrl: 'redis://localhost:6379',
+      redisServerUrl: 'redis://localhost:6379'
     }
   },
-  mounted: function() {
+  mounted: function () {
     console.log('Loading Redis Browser!')
   },
   components: {
@@ -40,11 +40,11 @@ export default {
     ServerUrl
   },
   methods: {
-    setCurrentKey: function(currentKey) {
-      console.log(`Setting current key as ${currentKey}`);
+    setCurrentKey: function (currentKey) {
+      console.log(`Setting current key as ${currentKey}`)
       this.currentKey = currentKey
     },
-    updateRedisServerUrl: function (newRedisServerUrl){
+    updateRedisServerUrl: function (newRedisServerUrl) {
       this.redisServerUrl = newRedisServerUrl
       console.log(`ss redisServerUrl changed to ${newRedisServerUrl}`)
     }

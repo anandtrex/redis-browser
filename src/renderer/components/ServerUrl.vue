@@ -23,18 +23,18 @@
 </template>
 
 <script>
-import redis from 'redis';
+import redis from 'redis'
 
 export default {
   name: 'ServerUrl',
-  data: function() {
+  data: function () {
     return {
       redisServerUrl: null,
       hasRedisError: false
     }
   },
   methods: {
-    updateRedisServerUrl: function() {
+    updateRedisServerUrl: function () {
       this.hasRedisError = false
 
       this.client = redis.createClient(this.redisServerUrl, {
@@ -47,14 +47,13 @@ export default {
         console.log(`redisServerUrl changed to ${this.redisServerUrl}`)
         this.$emit('update:redisServerUrl', this.redisServerUrl)
       }
-
     },
-    resetRedisServerUrl: function() {
+    resetRedisServerUrl: function () {
       this.$emit('update:redisServerUrl', 'redis://localhost:6379')
       this.hasRedisError = false
       this.redisServerUrl = ''
     }
   }
 }
-//this.$emit('update:redisServerUrl', newValue)
+// this.$emit('update:redisServerUrl', newValue)
 </script>
