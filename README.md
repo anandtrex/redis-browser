@@ -6,11 +6,11 @@ This is a simple browser for [redis](https://redis.io), that also supports displ
 
 ### Requirements
 * nodejs
-* yarn
+* npm
 
 On Archlinux, install with
 ```
-pacman -S nodejs yarn
+pacman -S nodejs npm
 ```
 
 ### Build Setup
