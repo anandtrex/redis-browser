@@ -1,7 +1,7 @@
 {
   "name": "redis-browser",
   "productName": "redis-browser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Anand <anandtrex@users.noreply.github.com>",
   "description": "A simple browser for Redis and ReJson",
   "license": "GPL-3.0+",

@@ -1,9 +1,9 @@
 <template>
-  <ul class="menu menu-list">
-    <li class="divider" data-content="KEYS">
-      <li v-for="key in keys" class="menu-item">
-        <a v-on:click='setCurrentKey(key)'>{{ key }}</a>
-      </li>
+  <ul class="nav">
+    <li class="divider" data-content="KEYS"></li>
+    <li v-for="key in keys" class="nav-item" v-bind:class="{'active': key == currentKey}">
+      <a v-on:click='setCurrentKey(key)' href="#">{{ key }}</a>
+    </li>
   </ul>
 </template>
 
@@ -15,7 +15,8 @@ export default {
   name: 'SideKeys',
   data: function () {
     return {
-      keys: []
+      keys: [],
+      currentKey: null
     }
   },
 
@@ -37,6 +38,7 @@ export default {
     setCurrentKey: function (currentKey) {
       console.log(`Sending event to set current key as ${currentKey}`)
       this.$emit('setCurrentKeyEvent', currentKey)
+      this.currentKey = currentKey
     },
 
     initClientAndUpdateKeys: function () {
