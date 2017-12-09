@@ -1,15 +1,13 @@
 <template>
-  <div id="app">
+<div id="app">
     <router-view></router-view>
-  </div>
+</div>
 </template>
 
 <script>
-  export default {
-    name: 'redis-browser'
-  }
+export default {
+  name: 'redis-browser'
+}
 </script>
 
-<style>
-  /* CSS */
-</style>
+<style src="./assets/styles/style.css" lang="css"></style>
