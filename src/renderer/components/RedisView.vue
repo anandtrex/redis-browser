@@ -1,13 +1,13 @@
 <template>
 <div class="container">
   <div class='columns'>
-  <div class="column col-3">
-    <SideKeys v-on:setCurrentKeyEvent='setCurrentKey'></SideKeys>
+    <div class="column col-3 sidebar">
+      <SideKeys v-on:setCurrentKeyEvent='setCurrentKey'></SideKeys>
+    </div>
+    <div class="column col-9 contents">
+      <KeyContents v-bind:currentKey='currentKey'></KeyContents>
+    </div>
   </div>
-  <div class="column col-9">
-    <KeyContents v-bind:currentKey='currentKey'></KeyContents>
-  </div>
-</div>
 </div>
 </template>
 
@@ -37,3 +37,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.sidebar,.contents {
+  overflow:scroll;
+  overflow-x:hidden;
+  max-height:90vh;
+  min-height: 90vh;
+}
+</style>

@@ -6747,6 +6747,10 @@ vue-html-loader@^1.2.4:
     loader-utils "^1.0.2"
     object-assign "^4.1.0"
 
+"vue-json-tree@https://github.com/anandtrex/vue-json-tree.git":
+  version "0.3.3"
+  resolved "https://github.com/anandtrex/vue-json-tree.git#0ec28f9727bc00da3784db5d214317f3c60ce9e9"
+
 vue-loader@^13.0.5:
   version "13.5.0"
   resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-13.5.0.tgz#52f7b3790a267eff80012b77ea187a54586dd5d4"

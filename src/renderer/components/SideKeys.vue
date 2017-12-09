@@ -1,22 +1,30 @@
 <template>
-  <ul class="menu">
-    <li class="divider" data-content="KEYS">
+<ul class="menu menu-list">
+  <li class="divider" data-content="KEYS">
     <li v-for="key in keys" class="menu-item">
       <a v-on:click='setCurrentKey(key)'>{{ key }}</a>
     </li>
-  </ul>
+</ul>
 </template>
 
 <script>
+import redis from 'redis';
+import rejson from 'redis-rejson';
+
 export default {
   name: 'SideKeys',
   data: function() {
     return {
-      keys: ['One', 'Two', 'Three']
+      keys: []
     }
   },
   mounted: function() {
     console.log('Loading Side Keys!')
+    this.client = redis.createClient()
+
+    this.client.keys('*', (err, replies) => {
+      this.keys = replies;
+    });
   },
 
   methods: {
@@ -29,10 +37,7 @@ export default {
 </script>
 
 <style>
-.custom-restricted-width {
-  /* To limit the menu width to the content of the menu: */
-  /*display: inline-block;*/
-  /* Or set the width explicitly: */
-  /* width: 10em; */
+.menu-list {
+  min-height: 90vh;
 }
 </style>
