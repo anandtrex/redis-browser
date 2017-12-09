@@ -2,6 +2,9 @@
 
 This is a simple browser for [redis](https://redis.io), that also supports displaying json stored in redis through the [rejson plugin](http://rejson.io)
 
+## Downloads
+Downloads for all platforms are available on the [Releases page](https://github.com/anandtrex/redis-browser/releases)
+
 ## Building from source
 
 ### Requirements
@@ -13,7 +16,7 @@ On Archlinux, install with
 pacman -S nodejs npm
 ```
 
-### Build Setup
+### Build
 First clone the repository. Then run:
 
 ``` bash
