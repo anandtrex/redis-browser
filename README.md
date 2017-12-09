@@ -1,6 +1,9 @@
 # Redis Browser
 
+
 This is a simple browser for [redis](https://redis.io), that also supports displaying json stored in redis through the [rejson plugin](http://rejson.io)
+
+![Screenshot](https://github.com/anandtrex/redis-browser/raw/gh-pages/redis-browser-screenshot.png)
 
 ## Downloads
 Downloads for all platforms are available on the [Releases page](https://github.com/anandtrex/redis-browser/releases)
