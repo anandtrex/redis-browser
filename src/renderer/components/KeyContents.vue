@@ -14,7 +14,7 @@
 import redis from 'redis'
 import rejson from 'redis-rejson'
 
-import JsonTree from 'vue-json-tree'
+import JsonTree from './json-tree'
 
 export default {
   name: 'KeyContents',
