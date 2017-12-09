@@ -1,9 +1,9 @@
 {
   "name": "redis-browser",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Anand <anandtrex@users.noreply.github.com>",
-  "description": "A browser for Redis",
-  "license": null,
+  "description": "A simple browser for Redis and ReJson",
+  "license": "GPL-3.0+",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
@@ -20,7 +20,7 @@
   },
   "build": {
     "productName": "redis-browser",
-    "appId": "org.simulatedgreg.electron-vue",
+    "appId": "org.anandtrex.redis-browser",
     "directories": {
       "output": "build"
     },
@@ -49,7 +49,8 @@
       "icon": "build/icons/icon.ico"
     },
     "linux": {
-      "icon": "build/icons"
+      "icon": "build/icons",
+      "category": "Development"
     }
   },
   "dependencies": {
