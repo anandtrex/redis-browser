@@ -1,10 +1,13 @@
 <template>
-  <ul class="nav">
-    <li class="divider" data-content="KEYS"></li>
-    <li v-for="key in keys" class="nav-item" v-bind:class="{'active': key == currentKey}">
-      <a v-on:click='setCurrentKey(key)' href="#">{{ key }}</a>
-    </li>
-  </ul>
+<v-navigation-drawer clipped fixed app permanent>
+  <v-list dense>
+    <v-list-tile @click="setCurrentKey(key)" v-for="key in keys">
+      <v-list-tile-content>
+        <v-list-tile-title>{{ key }}</v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+  </v-list>
+</v-navigation-drawer>
 </template>
 
 <script>
@@ -13,35 +16,38 @@ import rejson from 'redis-rejson'
 
 export default {
   name: 'SideKeys',
-  data: function () {
+  components: {
+  },
+  data: function() {
     return {
       keys: [],
-      currentKey: null
+      currentKey: null,
+      drawer: true
     }
   },
 
   props: ['redisServerUrl'],
 
-  mounted: function () {
+  mounted: function() {
     console.log('Loading Side Keys!')
     this.initClientAndUpdateKeys()
   },
 
   watch: {
-    redisServerUrl: function () {
+    redisServerUrl: function() {
       console.log(`Redis server url in SideKeys is ${this.redisServerUrl}`)
       this.initClientAndUpdateKeys()
     }
   },
 
   methods: {
-    setCurrentKey: function (currentKey) {
+    setCurrentKey: function(currentKey) {
       console.log(`Sending event to set current key as ${currentKey}`)
       this.$emit('setCurrentKeyEvent', currentKey)
       this.currentKey = currentKey
     },
 
-    initClientAndUpdateKeys: function () {
+    initClientAndUpdateKeys: function() {
       this.keys = []
       this.client = redis.createClient(this.redisServerUrl)
       this.client.keys('*', (err, replies) => {
@@ -53,7 +59,7 @@ export default {
 </script>
 
 <style>
-.menu-list {
+/* .menu-list {
   min-height: 90vh;
-}
+} */
 </style>

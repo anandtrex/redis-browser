@@ -1,22 +1,7 @@
 const {app, Menu} = require('electron')
 
 const template = [
-  {
-    role: 'window',
-    submenu: [
-      {role: 'minimize'},
-      {role: 'close'}
-    ]
-  },
-  {
-    role: 'help',
-    submenu: [
-      {
-        label: 'About',
-        click () { require('electron').shell.openExternal('https://github.com/anandtrex/redis-browser') }
-      }
-    ]
-  }
+
 ]
 
 if (process.platform === 'darwin') {
@@ -37,4 +22,5 @@ if (process.platform === 'darwin') {
 }
 
 const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
+// Menu.setApplicationMenu(menu)
+Menu.setApplicationMenu(null)

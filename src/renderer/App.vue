@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-    <router-view></router-view>
+  <router-view></router-view>
 </div>
 </template>
 
@@ -10,5 +10,7 @@ export default {
 }
 </script>
 
-<style src="spectre.css/dist/spectre.css" lang="css"></style>
-<style src="./assets/styles/style.css" lang="css"></style>
+<style>
+#app {
+}
+</style>

@@ -69,15 +69,19 @@ let webConfig = {
         }
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        use: {
-          loader: 'url-loader',
-          query: {
-            limit: 10000,
-            name: 'fonts/[name].[ext]'
-          }
-        }
-      }
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file?name=material-design-icons/iconfont/[name].[ext]'
+      },
+      // {
+      //   test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+      //   use: {
+      //     loader: 'url-loader',
+      //     query: {
+      //       limit: 10000,
+      //       name: 'fonts/[name].[ext]'
+      //     }
+      //   }
+      // }
     ]
   },
   plugins: [

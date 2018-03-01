@@ -1,13 +1,13 @@
 <template>
-<div class='card value-card'>
-  <div class="card-header">
-    <div class="card-title h5">Key Value</div>
-  </div>
-  <div class="card-body">
-    <json-tree :raw="currentKeyValue" v-if='isJsonValue'></json-tree>
-    <div v-else>{{ currentKeyValue }}</div>
-  </div>
-</div>
+<v-content>
+  <v-container fluid fill-height>
+    <v-layout justify-start align-start>
+      <v-flex shrink>
+        <json-tree :raw='currentKeyValue'></json-tree>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</v-content>
 </template>
 
 <script>
@@ -23,16 +23,15 @@ export default {
     JsonTree
   },
 
-  data: function () {
+  data: function() {
     return {
-      currentKeyValue: null,
-      isJsonValue: false
+      currentKeyValue: "\"Select key on left\"",
     }
   },
 
   props: ['currentKey', 'redisServerUrl'],
 
-  mounted: function () {
+  mounted: function() {
     console.log('Loading Key Contents!')
     rejson(redis)
     this.client = redis.createClient()
@@ -44,7 +43,7 @@ export default {
   methods: {},
 
   watch: {
-    currentKey: function () {
+    currentKey: function() {
       console.log('Current key changed')
 
       const key = this.currentKey
@@ -55,19 +54,17 @@ export default {
         if (keyType === 'ReJSON-RL') {
           this.client.json_get(key, (err1, replies) => {
             console.log('Replies (json): ', replies)
-            this.isJsonValue = true
             this.currentKeyValue = replies
           })
         } else {
           this.client.get(key, (err1, replies) => {
             console.log('Replies (normal): ', replies)
-            this.isJsonValue = false
-            this.currentKeyValue = replies
+            this.currentKeyValue = "\"" + replies + "\""
           })
         }
       })
     },
-    redisServerUrl: function () {
+    redisServerUrl: function() {
       console.log(`Redis server url is ${this.redisServerUrl}`)
       this.client = redis.createClient(this.redisServerUrl)
     }
@@ -76,7 +73,7 @@ export default {
 </script>
 
 <style>
-.value-card {
+/* .value-card {
   min-height: 90vh;
-}
+} */
 </style>
