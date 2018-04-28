@@ -24,13 +24,14 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "hoek": "^4.2.1",
+    "material-design-icons": "^3.0.1",
     "redis": "^2.8.0",
     "redis-rejson": "^1.0.0",
     "vue": "^2.5.13",
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",
-    "vuetify": "^1.0.4",
-    "material-design-icons": "^3.0.1"
+    "vuetify": "^1.0.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
