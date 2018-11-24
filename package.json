@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "hoek": "^4.2.1",
+    "hoek": "^6.0.4",
     "material-design-icons": "^3.0.1",
     "redis": "^2.8.0",
     "redis-rejson": "^1.0.0",
