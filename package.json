@@ -23,7 +23,7 @@
     "postinstall": "npm run lint:fix"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.19.2",
     "hoek": "^6.0.4",
     "material-design-icons": "^3.0.1",
     "redis": "^2.8.0",
