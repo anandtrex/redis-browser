@@ -78,7 +78,7 @@
     "vue-template-compiler": "^2.5.16",
     "vuetify-loader": "^1.0.5",
     "webpack": "^4.15.1",
-    "webpack-cli": "^3.0.8",
+    "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.1.4",
     "webpack-hot-middleware": "^2.22.2",
     "webpack-material-design-icons": "^0.1.0",
